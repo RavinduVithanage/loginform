@@ -3,9 +3,10 @@ function login(){
     var email=document.getElementById("email").value;
     var password=document.getElementById("password").value;
     let data = "\r Username: " + email+ " \r\n " + "Password: " + password ;
+  
     
     if(email.trim()=="" || password.trim()==""){
-            isEmpty();
+            isEmpty(email,password);
         }
     else{
         if(validateEmail(email)==true && validatePassword(password)==true){
@@ -18,16 +19,34 @@ function login(){
              document.body.appendChild(link);
              link.click();
              link.remove();
+            createToster();
+
+             
                    
         }
     }
 }
 
     
-function isEmpty(){
+function isEmpty(email,password){
+
+    const emailError=document.getElementById("email-error");
+    const passwordError=document.getElementById("password-error");
     
-        console.log("error");
-        alert("password is not valid");
+    if(email.trim()=="" &&  password.trim()==""){
+        emailError.classList.remove('hidden');
+        passwordError.classList.remove('hidden');
+    }else if(!email.trim()==""){
+        emailError.classList.add('hidden');
+
+    }else if(!password.trim()==""){
+        passwordError.classList.add('hidden');
+    }else{
+        emailError.classList.add('hidden');
+        passwordError.classList.add('hidden');
+    }
+    
+       
 }
 function validateEmail(email){
 
@@ -44,4 +63,12 @@ function validatePassword(password){
         alert("password is not valid");
     }else
     return password =passwordRegex.test(password);
+}
+function createToster(){
+
+    const succseefullMessage=document.getElementById("success");
+    succseefullMessage.classList.remove('hidden');
+    setTimeout(function(){ 
+        succseefullMessage.classList = succseefullMessage.classList.add('hidden'); 
+    }, 3000);
 }
