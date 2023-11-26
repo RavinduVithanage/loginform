@@ -36,11 +36,13 @@ function isEmpty(email,password){
     if(email.trim()=="" &&  password.trim()==""){
         emailError.classList.remove('hidden');
         passwordError.classList.remove('hidden');
-    }else if(!email.trim()==""){
+    }else if(!email.trim()=="" && password.trim()==""){
         emailError.classList.add('hidden');
+        passwordError.classList.remove('hidden');
 
-    }else if(!password.trim()==""){
+    }else if(!password.trim()=="" && email.trim()=="" ){
         passwordError.classList.add('hidden');
+        emailError.classList.remove('hidden');
     }else{
         emailError.classList.add('hidden');
         passwordError.classList.add('hidden');
@@ -49,18 +51,23 @@ function isEmpty(email,password){
        
 }
 function validateEmail(email){
-
+    
+        const emailError=document.getElementById("email-error");
         var emailRegex= /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        
         if(!emailRegex.test(email)){
-            alert("email is not valid");
+            emailError.classList.remove('hidden');
+            emailError.innerHTML="Email is not valid"
+           
         }else
         return email =emailRegex.test(email);
 }
 function validatePassword(password){
-
+    const passwordError=document.getElementById("password-error");
     var passwordRegex= /^[A-Za-z]\w{7,14}$/;
     if(!passwordRegex.test(password)){
-        alert("password is not valid");
+        passwordError.classList.remove('hidden');
+        passwordError.innerHTML="Password is not valid"
     }else
     return password =passwordRegex.test(password);
 }
