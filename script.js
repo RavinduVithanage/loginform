@@ -5,24 +5,20 @@ function login(){
     let data = "\r Username: " + email+ " \r\n " + "Password: " + password ;
   
     
-    if(email.trim()=="" || password.trim()==""){
-            isEmpty(email,password);
-        }
-    else{
-        if(validateEmail(email)==true && validatePassword(password)==true){
-            alert("login succseefull")
+    if(email.trim() == "" || password.trim() == ""){
+        isEmpty(email,password);
+    } else {
+        if(validateEmail(email) == true && validatePassword(password)== true){
+           
             const textToBLOB = new Blob([data], { type: "text/plain" });
             const link = document.createElement("a");
             link.download = 'form.txt';
             link.href = window.URL.createObjectURL(textToBLOB);
-             link.style.display = "none";
-             document.body.appendChild(link);
-             link.click();
-             link.remove();
-            createToster();
-
-             
-                   
+            link.style.display = "none";
+            document.body.appendChild(link);
+            link.click();
+            link.remove();
+            createToster();          
         }
     }
 }
@@ -46,9 +42,7 @@ function isEmpty(email,password){
     }else{
         emailError.classList.add('hidden');
         passwordError.classList.add('hidden');
-    }
-    
-       
+    }    
 }
 function validateEmail(email){
     
@@ -77,5 +71,6 @@ function createToster(){
     succseefullMessage.classList.remove('hidden');
     setTimeout(function(){ 
         succseefullMessage.classList = succseefullMessage.classList.add('hidden'); 
-    }, 3000);
+        
+    }, 30000);
 }
