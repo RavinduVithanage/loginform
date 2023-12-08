@@ -93,8 +93,10 @@ function createToster(){
 
     const succseefullMessage=document.getElementById("success");
     succseefullMessage.classList.remove('hidden');
+    succseefullMessage.classList.add('animate-toaster');
     setTimeout(function(){ 
-    succseefullMessage.classList.add('hidden'); 
+    succseefullMessage.classList.add('hidden');
+    succseefullMessage.classList.remove('animate-toaster'); 
         
     }, 30000);
 }

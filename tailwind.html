@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @keyframes moveRightToLeft {
+          0% {
+            transform: translateX(100%);
+          }
+          100% {
+            transform: translateX(0);
+          }
+        }
+      
+        .animate-toaster {
+          animation: moveRightToLeft 1s ease-out;
+        }
+      </style>
 </head>
 <body>
     <div class="flex justify-center items-center h-screen ">
@@ -42,7 +56,7 @@
 
     <!--succsess full message-->
 
-    <div class="flex text-white justify-end  items-center  text-center md:text-left -translate-x-10 duration-200 ease-linear hidden block" id="success">
+    <div class="flex text-white justify-end  items-center  text-center md:text-left hidden transition-transform transition-opacity duration-300 ease-out" id="success">
         <div class="bg-purple-600 w-30 p-3">
           <h1 class="">Login Succsessfull</h1>
         </div>
