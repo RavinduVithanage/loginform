@@ -69,7 +69,9 @@ function login(){
             document.body.appendChild(link);
             link.click();
             link.remove();
-            createToster();          
+            createToster();
+            clear();
+           
         }
     }
 }
@@ -104,4 +106,17 @@ document.getElementById('close').addEventListener("click",function(){
     const succseefullMessage=document.getElementById("success");
     succseefullMessage.classList.add('hidden');
 });
+
+function clear(){
+
+    var email=document.getElementById("email").value;
+    var password=document.getElementById("password").value;
+
+    if(!email=="" && !password==""){
+         
+        email =="";
+        password=="";
+    }
+
+}
 
